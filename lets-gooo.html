@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's Gooo — 30-Day Brand, Product & Growth Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F7F4;
+    --paper:#0F241A;
+    --paper-dim:#17301F;
+    --card:#1C3D28;
+    --card-border:#2E5A3D;
+    --ink:#F3F1E6;
+    --ink-soft:#AABDA8;
+    --heading:#D97D3D;
+    --heading-dim:#B5652E;
+    --trail:#7FBE9E;
+    --trail-dim:rgba(127,190,158,0.14);
+    --alpine:#8FB4DE;
+    --alpine-dim:rgba(143,180,222,0.14);
+    --ember:#D97D3D;
+    --ember-dim:rgba(217,125,61,0.16);
+    --purple:#C9A8E0;
+    --purple-dim:rgba(176,138,209,0.16);
+    --mist:rgba(170,189,168,0.16);
+    --line:rgba(243,241,230,0.14);
+    --radius:14px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{color:var(--heading);}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+  a{color:inherit;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--trail);
+    font-weight:500;
+  }
+  h1,h2,h3{font-family:var(--display); font-weight:600; letter-spacing:-0.01em;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  /* ---------- Layout shell: sticky rail + content ---------- */
+  .shell{display:grid; grid-template-columns:240px 1fr; max-width:1400px; margin:0 auto;}
+  .rail{
+    position:sticky; top:0; align-self:start; height:100vh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding:32px 20px 32px 32px;
+    border-right:1px solid var(--line);
+  }
+  .rail-brand{
+    font-family:var(--display); font-weight:700; font-size:19px;
+    margin-bottom:48px; letter-spacing:-0.02em;
+  }
+  .rail-brand span{color:var(--heading);}
+  .navlist{list-style:none; display:flex; flex-direction:column; gap:2px;}
+  .navlist a{
+    display:flex; align-items:baseline; gap:10px;
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-soft);
+    text-decoration:none; padding:9px 10px; border-radius:8px;
+    transition:background .2s, color .2s;
+  }
+  .navlist a .num{color:var(--line); font-weight:500;}
+  .navlist a:hover{background:var(--paper-dim); color:var(--ink);}
+  .navlist a.active{background:var(--trail-dim); color:var(--trail); font-weight:600;}
+  .navlist a.active .num{color:var(--trail);}
+  .rail-foot{margin-top:40px; font-family:var(--mono); font-size:11px; color:var(--ink-soft); opacity:.7;}
+  .content{min-width:0;}
+  section{padding:96px 56px; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  .kicker{margin-bottom:14px;}
+  .sec-title{font-size:34px; margin-bottom:18px; max-width:720px;}
+  .sec-lede{color:var(--ink-soft); max-width:640px; font-size:16px; margin-bottom:44px;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    padding:88px 56px 64px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:center;}
+  .hero h1{font-size:56px; line-height:1.03; margin:18px 0 22px; letter-spacing:-0.03em;}
+  .hero .lede{font-size:18px; color:var(--ink-soft); max-width:520px; margin-bottom:30px;}
+  .positioning{
+    font-family:var(--display); font-size:16px; line-height:1.5;
+    border-left:3px solid var(--trail); padding-left:18px; max-width:520px;
+    color:var(--ink);
+  }
+  .season-demo{
+    background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius);
+    padding:26px; box-shadow:0 24px 48px -28px rgba(0,0,0,.55);
+  }
+  .season-demo-label{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px;}
+  .season-tabs{display:flex; gap:8px; margin-bottom:20px;}
+  .season-tab{
+    font-family:var(--mono); font-size:12px; padding:8px 14px; border-radius:999px;
+    border:1px solid var(--card-border); background:transparent; color:var(--ink-soft); cursor:pointer;
+    transition:all .25s;
+  }
+  .season-tab.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .route-svg{width:100%; height:150px; display:block;}
+  .route-path{fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round;
+    stroke-dasharray:520; stroke-dashoffset:520; transition:stroke-dashoffset 1s ease, opacity .3s;}
+  .route-path.hidden{opacity:0;}
+  .route-path.drawn{stroke-dashoffset:0;}
+  .season-caption{font-family:var(--display); font-size:19px; margin-top:10px; min-height:26px; color:var(--heading);}
+  .hero-stats{display:flex; gap:28px; margin-top:40px; flex-wrap:wrap;}
+  .hstat b{display:block; font-family:var(--display); font-size:26px; color:var(--heading);}
+  .hstat span{font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.08em;}
+
+  /* ---------- Callouts / cards ---------- */
+  .callout{
+    background:var(--trail-dim); border-radius:var(--radius); padding:24px 26px;
+    border:1px solid rgba(127,190,158,0.35);
+  }
+  .callout.alpine{background:var(--alpine-dim); border-color:rgba(143,180,222,0.35);}
+  .callout.ember{background:var(--ember-dim); border-color:rgba(217,125,61,0.4);}
+  .callout-title{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; font-weight:600; margin-bottom:10px; color:var(--trail);}
+  .callout.alpine .callout-title{color:var(--alpine);}
+  .callout.ember .callout-title{color:var(--ember);}
+  .callout p{color:var(--ink); font-size:14.5px;}
+  .callout p + p{margin-top:8px;}
+
+  .stat-row{display:flex; gap:36px; margin:36px 0 8px; flex-wrap:wrap;}
+  .stat b{font-family:var(--display); font-size:30px; display:block; color:var(--trail);}
+  .stat span{font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.08em;}
+
+  .grid-4{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media (max-width:1100px){ .grid-4{grid-template-columns:repeat(2,1fr);} .grid-3{grid-template-columns:repeat(2,1fr);} }
+
+  .card{
+    background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:22px;
+  }
+  .card h4{font-family:var(--display); font-size:16px; margin-bottom:8px;}
+  .card p{font-size:13.5px; color:var(--ink-soft);}
+  .pillar-num{font-family:var(--mono); font-size:11px; color:var(--ink-soft); margin-bottom:10px; display:block; opacity:.6;}
+
+  /* ---------- Scorecard bars ---------- */
+  .score-list{display:flex; flex-direction:column; gap:16px; margin-bottom:36px;}
+  .score-row{display:grid; grid-template-columns:230px 1fr 60px; align-items:center; gap:16px;}
+  .score-name{font-size:14px; font-weight:600;}
+  .score-track{background:rgba(243,241,230,0.1); border-radius:999px; height:10px; overflow:hidden;}
+  .score-fill{height:100%; width:0; background:linear-gradient(90deg, var(--trail), var(--alpine)); border-radius:999px; transition:width 1.1s cubic-bezier(.2,.8,.2,1);}
+  .score-val{font-family:var(--mono); font-size:13px; text-align:right; color:var(--ink-soft);}
+  .score-why{grid-column:1 / -1; font-size:13.5px; color:var(--ink-soft); margin-top:-6px; padding-left:0; max-width:760px;}
+  .readiness{
+    display:flex; align-items:center; gap:28px; background:#0A1A11; color:var(--ink);
+    border-radius:var(--radius); padding:30px 32px; margin-top:8px; border:1px solid var(--card-border);
+  }
+  .readiness .big{font-family:var(--display); font-size:52px; line-height:1; color:var(--heading);}
+  .readiness .big span{font-size:22px; color:var(--ink-soft);}
+  .readiness ul{list-style:none; font-size:13.5px; display:flex; flex-direction:column; gap:6px;}
+  .readiness ul li:before{content:"→ "; color:var(--heading);}
+
+  /* ---------- Timeline (product launch) ---------- */
+  .timeline{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:40px;}
+  .tl-step{border-top:3px solid var(--card-border); padding-top:16px; position:relative;}
+  .tl-step.done{border-top-color:var(--trail);}
+  .tl-step.now{border-top-color:var(--ember);}
+  .tl-tag{font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft);}
+  .tl-step.done .tl-tag{color:var(--trail);}
+  .tl-step.now .tl-tag{color:var(--ember);}
+  .tl-step h4{font-family:var(--display); font-size:16px; margin:6px 0 8px;}
+  .tl-step p{font-size:13px; color:var(--ink-soft);}
+
+  .funnel{display:flex; flex-wrap:wrap; gap:0; align-items:center; font-family:var(--mono); font-size:12px;}
+  .funnel span.step{background:var(--card); border:1px solid var(--card-border); border-radius:999px; padding:8px 14px; color:var(--ink-soft);}
+  .funnel span.arrow{padding:0 8px; color:var(--ink-soft); opacity:.5;}
+
+  /* ---------- Calendar ---------- */
+  .week-tabs{display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap;}
+  .week-tab{
+    font-family:var(--mono); font-size:13px; padding:9px 18px; border-radius:999px;
+    border:1px solid var(--card-border); background:var(--card); cursor:pointer; color:var(--ink-soft);
+  }
+  .week-tab.active{background:var(--trail); color:#0A1A11; border-color:var(--trail); font-weight:600;}
+  .week-panel{display:none;}
+  .week-panel.active{display:block;}
+  .day-grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(230px,1fr)); gap:14px;}
+  .day-card{background:var(--card); border:1px solid var(--card-border); border-radius:12px; padding:16px;}
+  .day-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .day-num{font-family:var(--mono); font-size:11px; color:var(--ink-soft);}
+  .theme-chip{font-family:var(--mono); font-size:9.5px; text-transform:uppercase; letter-spacing:.06em; padding:3px 8px; border-radius:999px; font-weight:600;}
+  .theme-A{background:var(--trail-dim); color:var(--trail);}
+  .theme-B{background:var(--alpine-dim); color:var(--alpine);}
+  .theme-C{background:var(--ember-dim); color:var(--ember);}
+  .theme-D{background:var(--purple-dim); color:var(--purple);}
+  .theme-E{background:var(--mist); color:var(--ink-soft);}
+  .day-card p{font-size:13.5px; margin-bottom:8px; color:var(--ink);}
+  .day-format{font-family:var(--mono); font-size:11px; color:var(--ink-soft);}
+  .founder-badge{font-family:var(--mono); font-size:10px; margin-top:8px; display:inline-block; color:var(--ink-soft);}
+
+  .legend{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:20px; font-family:var(--mono); font-size:11.5px; color:var(--ink-soft);}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .legend i{width:9px; height:9px; border-radius:3px; display:inline-block;}
+
+  /* ---------- Campaign cards ---------- */
+  .campaign-card{background:var(--card); border:1px solid var(--card-border); border-radius:var(--radius); padding:20px;}
+  .campaign-card .cnum{font-family:var(--mono); font-size:11px; color:var(--trail);}
+  .campaign-card h4{font-family:var(--display); font-size:16px; margin:6px 0 10px;}
+  .kv{display:flex; font-size:13px; margin-bottom:6px; gap:8px; color:var(--ink);}
+  .kv b{font-weight:600; min-width:74px; color:var(--ink-soft); font-size:11.5px; font-family:var(--mono); text-transform:uppercase; letter-spacing:.04em; padding-top:1px;}
+
+  /* Budget bar */
+  .budget-bar{display:flex; height:56px; border-radius:10px; overflow:hidden; margin:24px 0 14px; border:1px solid var(--card-border);}
+  .budget-seg{display:flex; align-items:center; justify-content:center; flex-direction:column; color:#fff; font-family:var(--mono); font-size:12px;}
+  .budget-seg b{font-family:var(--display); font-size:15px;}
+  .budget-legend{display:flex; gap:22px; font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); flex-wrap:wrap;}
+
+  .proj-compare{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:28px 0;}
+  .proj-card{border-radius:var(--radius); padding:22px; border:1px solid var(--card-border);}
+  .proj-card.opt{background:var(--trail-dim); border-color:rgba(127,190,158,0.35);}
+  .proj-card.cons{background:var(--card);}
+  .proj-card h5{font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px; color:var(--ink-soft);}
+  .proj-card .pnum{font-family:var(--display); font-size:28px; margin-bottom:2px; color:var(--ink);}
+  .proj-card .plabel{font-size:12px; color:var(--ink-soft); margin-bottom:14px;}
+
+  /* checklist */
+  .check-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px 28px;}
+  .check-item{display:flex; gap:10px; font-size:14px; align-items:flex-start;}
+  .check-item .box{width:16px; height:16px; border:1.5px solid var(--trail); border-radius:4px; margin-top:2px; flex:none;}
+
+  footer{padding:48px 56px; font-family:var(--mono); font-size:11.5px; color:var(--ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  @media (max-width:900px){
+    .shell{grid-template-columns:1fr;}
+    .rail{position:relative; height:auto; flex-direction:row; overflow-x:auto; border-right:none; border-bottom:1px solid var(--line); padding:16px 20px;}
+    .rail-brand{margin:0 20px 0 0;}
+    .navlist{flex-direction:row;}
+    .rail-foot{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:38px;}
+    section{padding:56px 24px;}
+    .timeline, .grid-4, .grid-3, .grid-2, .proj-compare, .check-grid{grid-template-columns:1fr;}
+    .score-row{grid-template-columns:1fr; gap:6px;}
+    .score-val{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <nav class="rail">
+    <div class="rail-brand">Let's <span>Gooo</span></div>
+    <ul class="navlist">
+      <li><a href="#overview" class="num">01</a></li>
+    </ul>
+    <ul class="navlist" id="navlist">
+      <li><a href="#overview"><span class="num">01</span>Overview</a></li>
+      <li><a href="#scorecard"><span class="num">02</span>Scorecard</a></li>
+      <li><a href="#brand"><span class="num">03</span>Brand strategy</a></li>
+      <li><a href="#product"><span class="num">04</span>Product launch</a></li>
+      <li><a href="#framework"><span class="num">05</span>Growth framework</a></li>
+      <li><a href="#calendar"><span class="num">06</span>30-day calendar</a></li>
+      <li><a href="#paid"><span class="num">07</span>Paid acquisition</a></li>
+      <li><a href="#reporting"><span class="num">08</span>Reporting & asks</a></li>
+    </ul>
+    <div class="rail-foot">Prepared for Adam &amp; Alex<br>July 2026</div>
+  </nav>
+
+  <div class="content">
+
+    <!-- HERO -->
+    <section class="hero" id="hero" style="border-bottom:1px solid var(--line);">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">30-Day Brand, Product &amp; Growth Strategy</div>
+          <h1>One coach.<br>Every season.</h1>
+          <p class="lede">A complete strategy for Let's Gooo's first month — brand positioning, product launch sequencing, content and paid acquisition, and the numbers behind all of it.</p>
+          <p class="positioning">For multi-sport, seasonal, and goal-driven athletes 35+, Let's Gooo is the AI coach that treats an entire athletic year as one continuous training plan — not a piece of it.</p>
+          <div class="hero-stats">
+            <div class="hstat"><b>$1,000</b><span>Test budget</span></div>
+            <div class="hstat"><b>30</b><span>Days</span></div>
+            <div class="hstat"><b>1</b><span>Founder session</span></div>
+            <div class="hstat"><b>7.7/10</b><span>Plan readiness</span></div>
+          </div>
+        </div>
+        <div class="season-demo">
+          <div class="season-demo-label">The core mechanic — see it work</div>
+          <div class="season-tabs">
+            <button class="season-tab active" data-season="summer">Summer</button>
+            <button class="season-tab" data-season="fall">Fall</button>
+            <button class="season-tab" data-season="winter">Winter</button>
+          </div>
+          <svg class="route-svg" viewBox="0 0 400 150">
+            <path id="path-summer" class="route-path" stroke="#8FD1AE" d="M20,110 C90,40 150,140 220,70 C270,20 330,90 380,40"></path>
+            <path id="path-fall" class="route-path hidden" stroke="#E8934B" d="M20,80 C70,20 110,20 150,70 C190,120 230,120 260,70 C300,10 340,10 380,60"></path>
+            <path id="path-winter" class="route-path hidden" stroke="#9CC0EA" d="M20,20 L90,60 L140,45 L200,100 L250,80 L310,130 L380,120"></path>
+          </svg>
+          <div class="season-caption" id="season-caption">"Strong for trail season."</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 OVERVIEW -->
+    <section id="overview">
+      <div class="eyebrow kicker">01 — Overview</div>
+      <h2 class="sec-title">Not a content calendar. A full acquisition system.</h2>
+      <p class="sec-lede">Brand → audience → content → community → paid acquisition → conversion → retention → reporting. The first 30 days build every part of that chain, not just the posts in the middle of it.</p>
+      <div class="callout" style="max-width:720px;">
+        <div class="callout-title">Primary objective</div>
+        <p>Generate qualified app signups and identify the messaging, audience, and creative combination that drives the lowest cost per signup — while leaving behind a repeatable system for month two.</p>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b>CPS</b><span>Primary KPI: cost per signup</span></div>
+        <div class="stat"><b>7d</b><span>Activation window checked</span></div>
+        <div class="stat"><b>4</b><span>Weeks, distinct hypotheses</span></div>
+      </div>
+    </section>
+
+    <!-- 02 SCORECARD -->
+    <section id="scorecard">
+      <div class="eyebrow kicker">02 — Strategic Scorecard</div>
+      <h2 class="sec-title">An honest read on where this plan stands.</h2>
+      <p class="sec-lede">Rated before it runs, so strengths and risk are equally visible — not a pitch, a scorecard.</p>
+
+      <div class="score-list" id="score-list">
+        <div class="score-row" data-score="80">
+          <div class="score-name">Brand positioning &amp; differentiation</div>
+          <div class="score-track"><div class="score-fill"></div></div>
+          <div class="score-val">8/10</div>
+          <div class="score-why">The "for" framing and the seasonal-adaptation proof are genuinely distinctive. Capped because a formal visual identity system doesn't exist yet.</div>
+        </div>
+        <div class="score-row" data-score="90">
+          <div class="score-name">Audience &amp; segmentation</div>
+          <div class="score-track"><div class="score-fill"></div></div>
+          <div class="score-val">9/10</div>
+          <div class="score-why">Sharp, falsifiable, tied to real product behavior. Loose edge: Segment 2's five sub-flavors still need to narrow.</div>
+        </div>
+        <div class="score-row" data-score="80">
+          <div class="score-name">Content strategy</div>
+          <div class="score-track"><div class="score-fill"></div></div>
+          <div class="score-val">8/10</div>
+          <div class="score-why">Five themes map cleanly to segments and guardrails. The ~7 pieces/week cadence at full ramp is the single biggest execution risk for a solo operator.</div>
+        </div>
+        <div class="score-row" data-score="70">
+          <div class="score-name">Paid acquisition strategy</div>
+          <div class="score-track"><div class="score-fill"></div></div>
+          <div class="score-val">7/10</div>
+          <div class="score-why">Angles, kill criteria, retargeting are sound. Zero historical data — read week 1–2 as calibration, not verdict.</div>
+        </div>
+        <div class="score-row" data-score="60">
+          <div class="score-name">Tracking &amp; analytics</div>
+          <div class="score-track"><div class="score-fill"></div></div>
+          <div class="score-val">6/10</div>
+          <div class="score-why">Ad-to-install attribution isn't built yet — the single riskiest dependency in the plan.</div>
+        </div>
+        <div class="score-row" data-score="70">
+          <div class="score-name">Community strategy</div>
+          <div class="score-track"><div class="score-fill"></div></div>
+          <div class="score-val">7/10</div>
+          <div class="score-why">Right communities named, right approach. Currently under-resourced relative to how cheap it is.</div>
+        </div>
+        <div class="score-row" data-score="90">
+          <div class="score-name">Operational realism / founder load</div>
+          <div class="score-track"><div class="score-fill"></div></div>
+          <div class="score-val">9/10</div>
+          <div class="score-why">One founder session is a genuinely light ask; nearly everything downstream is solo.</div>
+        </div>
+        <div class="score-row" data-score="80">
+          <div class="score-name">Reporting &amp; iteration</div>
+          <div class="score-track"><div class="score-fill"></div></div>
+          <div class="score-val">8/10</div>
+          <div class="score-why">Weekly-plus-Week-4 structure is strong. Added a Day 15 mid-month checkpoint to close the one gap.</div>
+        </div>
+      </div>
+
+      <div class="readiness">
+        <div class="big">7.7<span>/10</span></div>
+        <ul>
+          <li>Strong, testable plan for a $1,000 first month — segmentation and content logic ahead of most first-month plans.</li>
+          <li>Fix before spending: attribution live and verified before ad #1, not a Day 5 stretch goal.</li>
+          <li>Fix before spending: the content cadence fallback needs to actually be used if a week gets tight.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 03 BRAND -->
+    <section id="brand">
+      <div class="eyebrow kicker">03 — Brand Strategy</div>
+      <h2 class="sec-title">What Let's Gooo stands for, before a single ad runs.</h2>
+
+      <div class="grid-4" style="margin-bottom:40px;">
+        <div class="card">
+          <span class="pillar-num">01</span>
+          <h4>Adaptive, not generic</h4>
+          <p>The plan changes because life does: a season ends, a trip gets booked, an injury happens.</p>
+        </div>
+        <div class="card">
+          <span class="pillar-num">02</span>
+          <h4>Athlete-first, not appearance-first</h4>
+          <p>Training is measured by performance and readiness, never by how someone looks.</p>
+        </div>
+        <div class="card">
+          <span class="pillar-num">03</span>
+          <h4>Earned trust, not hype</h4>
+          <p>Plain language, real and provable claims, no manufactured urgency.</p>
+        </div>
+        <div class="card">
+          <span class="pillar-num">04</span>
+          <h4>One coach, every goal</h4>
+          <p>A single relationship across every sport and season, not a new app per activity.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h4 style="margin-bottom:14px;">Voice</h4>
+          <p style="margin-bottom:8px;">A knowledgeable peer, not a hype machine — plain-spoken, calm, collaborative. Not male-coded, in copy, casting, and imagery. The load-bearing word is <strong>"for"</strong> — always attached to a goal, never a person-type.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; margin-top:12px;">
+            <span class="theme-chip theme-C" style="text-transform:none; font-size:11px;">no "revolutionary"</span>
+            <span class="theme-chip theme-C" style="text-transform:none; font-size:11px;">no "seamless"</span>
+            <span class="theme-chip theme-C" style="text-transform:none; font-size:11px;">no "unlock your potential"</span>
+            <span class="theme-chip theme-C" style="text-transform:none; font-size:11px;">no "beta/early user"</span>
+          </div>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:14px;">Competitive differentiation</h4>
+          <p>The category includes single-sport training apps, generic workout content, and trackers that log without programming. Let's Gooo's claim is narrow and specific: one coach that reasons over a person's whole athletic year — not a piece of it. Every ad and post comes back to that.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 PRODUCT LAUNCH -->
+    <section id="product">
+      <div class="eyebrow kicker">04 — Product Launch Strategy</div>
+      <h2 class="sec-title">Marketing built around where the product actually is.</h2>
+      <p class="sec-lede">Let's Gooo is a paid subscription product that hasn't started charging yet — the plan has to move with that arc, not treat it as a generic app promotion.</p>
+
+      <div class="timeline">
+        <div class="tl-step done">
+          <div class="tl-tag">Complete</div>
+          <h4>Soft launch</h4>
+          <p>Personal invites only — low dozens of users, all from the founders' own network.</p>
+        </div>
+        <div class="tl-step now">
+          <div class="tl-tag">Live now</div>
+          <h4>Public launch</h4>
+          <p>App Store listing is public — this plan is the app's first organic and paid acquisition, ever.</p>
+        </div>
+        <div class="tl-step">
+          <div class="tl-tag">Mid-month</div>
+          <h4>Monetization launch</h4>
+          <p>Early-bird pricing banner goes live in-app; conversion-to-paid becomes measurable.</p>
+        </div>
+        <div class="tl-step">
+          <div class="tl-tag">Month 2+</div>
+          <h4>Full paid conversion</h4>
+          <p>Standard pricing begins; retention and LTV join cost-per-signup as primary metrics.</p>
+        </div>
+      </div>
+
+      <h4 style="font-family:var(--display); font-size:15px; margin-bottom:14px; color:var(--ink-soft);">The funnel every KPI maps to</h4>
+      <div class="funnel">
+        <span class="step">Impression</span><span class="arrow">→</span>
+        <span class="step">Click</span><span class="arrow">→</span>
+        <span class="step">Landing / App Store</span><span class="arrow">→</span>
+        <span class="step">Install</span><span class="arrow">→</span>
+        <span class="step">Registered</span><span class="arrow">→</span>
+        <span class="step">Activated</span><span class="arrow">→</span>
+        <span class="step">Retained wk4</span><span class="arrow">→</span>
+        <span class="step">Paid</span>
+      </div>
+    </section>
+
+    <!-- 05 GROWTH FRAMEWORK -->
+    <section id="framework">
+      <div class="eyebrow kicker">05 — Growth Framework</div>
+      <h2 class="sec-title">Five pillars, running in the order they actually happen.</h2>
+      <div class="grid-3">
+        <div class="card"><span class="pillar-num">01</span><h4>Brand Foundation</h4><p>Trust and credibility: identity, messaging, profile and App Store optimization.</p></div>
+        <div class="card"><span class="pillar-num">02</span><h4>Organic Content Engine</h4><p>Educate, demonstrate, create demand — Instagram-first, five recurring themes.</p></div>
+        <div class="card"><span class="pillar-num">03</span><h4>Community Growth</h4><p>Genuine relationships in existing athlete communities, founder-led trust.</p></div>
+        <div class="card"><span class="pillar-num">04</span><h4>Paid Acquisition</h4><p>Test messaging/audience combinations for the lowest cost per qualified signup.</p></div>
+        <div class="card"><span class="pillar-num">05</span><h4>Conversion &amp; Analytics</h4><p>Track the full funnel so every dollar and post ties back to an outcome.</p></div>
+      </div>
+    </section>
+
+    <!-- 06 CALENDAR -->
+    <section id="calendar">
+      <div class="eyebrow kicker">06 — The 30-Day Calendar</div>
+      <h2 class="sec-title">Posting starts Day 4. One founder session covers weeks 1–2.</h2>
+      <p class="sec-lede">It's currently summer — every "season adapts" asset leads with a summer-sport version. The literal ski-season version waits for fall.</p>
+
+      <div class="legend">
+        <span><i style="background:#7FBE9E"></i>A — It knows your season</span>
+        <span><i style="background:#8FB4DE"></i>B — Outgrown following along</span>
+        <span><i style="background:#D97D3D"></i>C — The goal has a date</span>
+        <span><i style="background:#C9A8E0"></i>D — Trained like an athlete</span>
+        <span><i style="background:#AABDA8"></i>E — Build in public</span>
+      </div>
+
+      <div class="week-tabs">
+        <button class="week-tab active" data-week="1">Week 1</button>
+        <button class="week-tab" data-week="2">Week 2</button>
+        <button class="week-tab" data-week="3">Week 3</button>
+        <button class="week-tab" data-week="4">Week 4</button>
+      </div>
+
+      <div class="week-panel active" id="week-1">
+        <div class="day-grid">
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 4</span><span class="theme-chip theme-A">Theme A</span></div><p>"The problem": training changes, the plan should too — summer scenario, coach adapts.</p><span class="day-format">Reel / voiceover demo</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 5</span><span class="theme-chip theme-A">Theme A</span></div><p>Product demo: a real conversation with the AI coach.</p><span class="day-format">Screen recording</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 6</span><span class="theme-chip theme-A">Theme A</span></div><p>Static graphic: "One coach. Every goal."</p><span class="day-format">Static</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 7</span><span class="theme-chip theme-E">Theme E</span></div><p>Founder story: "Why we built Let's Gooo" (from the Day 1 bank).</p><span class="day-format">Video</span><span class="founder-badge">Founder: No (pre-recorded)</span></div>
+        </div>
+      </div>
+
+      <div class="week-panel" id="week-2">
+        <div class="day-grid">
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 8</span><span class="theme-chip theme-B">Theme B</span></div><p>Carousel: "5 reasons generic workout plans fail."</p><span class="day-format">Carousel</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 9</span><span class="theme-chip theme-B">Theme B</span></div><p>Comparison reel: generic workout app vs. adaptive coaching.</p><span class="day-format">Reel</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 10</span><span class="theme-chip theme-B">Theme B</span></div><p>Product demo: a workout adjusting in real time.</p><span class="day-format">Screen recording</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 11</span><span class="theme-chip theme-B">Theme B</span></div><p>Community question: "What are you training for?"</p><span class="day-format">Community post</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 12</span><span class="theme-chip theme-E">Theme E</span></div><p>Founder clip #2, from the bank.</p><span class="day-format">Video</span><span class="founder-badge">Founder: No (pre-recorded)</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 13</span><span class="theme-chip theme-B">Theme B</span></div><p>Educational reel: progressive overload explained.</p><span class="day-format">Reel</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 14</span><span class="theme-chip theme-E">Theme E</span></div><p>Weekly recap + audience insights.</p><span class="day-format">Static / story</span><span class="founder-badge">Founder: No</span></div>
+        </div>
+      </div>
+
+      <div class="week-panel" id="week-3">
+        <div class="day-grid">
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 15</span><span class="theme-chip theme-C">Theme C</span></div><p>"The goal has a date" — marathon, hiking trip, ski season, strength goal.</p><span class="day-format">Static</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 16</span><span class="theme-chip theme-D">Theme D</span></div><p>Sam coach demo: positioned as athletes, not aesthetics.</p><span class="day-format">Voiceover clip</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 17</span><span class="theme-chip theme-C">Theme C</span></div><p>Carousel: "Your fitness journey is not linear."</p><span class="day-format">Carousel</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 18</span><span class="theme-chip theme-A">Theme A</span></div><p>Apple Health / Strava integration demo.</p><span class="day-format">Reel</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 19</span><span class="theme-chip theme-A">Theme A</span></div><p>Static: "Strong for your season" tagline test.</p><span class="day-format">Static</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 20</span><span class="theme-chip theme-E">Theme E</span></div><p>Community engagement — participation, not a new post.</p><span class="day-format">—</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 21</span><span class="theme-chip theme-E">Theme E</span></div><p>Founder clip #3, from the bank.</p><span class="day-format">Video</span><span class="founder-badge">Founder: No (pre-recorded)</span></div>
+        </div>
+      </div>
+
+      <div class="week-panel" id="week-4">
+        <div class="day-grid">
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 22</span><span class="theme-chip theme-B">Theme B</span></div><p>FAQ reel: "How does Let's Gooo work?"</p><span class="day-format">Reel</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 23</span><span class="theme-chip theme-B">Theme B</span></div><p>User journey: "Before: confused training. After: a personalized plan."</p><span class="day-format">Static / carousel</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 24</span><span class="theme-chip theme-A">Theme A</span></div><p>Repost/re-cut of the best-performing angle from weeks 1–3.</p><span class="day-format">Whichever format won</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 25</span><span class="theme-chip theme-E">Theme E</span></div><p>Real testimonial — only if a genuine, opted-in quote exists; skip rather than fabricate.</p><span class="day-format">Static</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 26</span><span class="theme-chip theme-E">Theme E</span></div><p>Founder clip #4, or skip if not needed.</p><span class="day-format">Video</span><span class="founder-badge">Founder: No (pre-recorded)</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 27</span><span class="theme-chip theme-B">Theme B</span></div><p>Comparison: traditional plans vs. adaptive coaching.</p><span class="day-format">Static / carousel</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 28</span><span class="theme-chip theme-E">Theme E</span></div><p>Community challenge or engagement prompt.</p><span class="day-format">Community post</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 29</span><span class="theme-chip theme-A">Theme A</span></div><p>Best-performing content, remade with a new hook.</p><span class="day-format">Reel / static</span><span class="founder-badge">Founder: No</span></div>
+          <div class="day-card"><div class="day-head"><span class="day-num">Day 30</span><span class="theme-chip theme-E">Theme E</span></div><p>Month recap + "what's next" wrap post.</p><span class="day-format">Static / short video</span><span class="founder-badge">Founder: Optional</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 PAID -->
+    <section id="paid">
+      <div class="eyebrow kicker">07 — Paid Acquisition &amp; The Numbers</div>
+      <h2 class="sec-title">Five campaigns, a real budget, and honest projections.</h2>
+
+      <div class="grid-3" style="margin-bottom:44px;">
+        <div class="campaign-card"><div class="cnum">Campaign 01 — Week 1</div><h4>Problem Awareness</h4>
+          <div class="kv"><b>Audience</b><span>Broad fitness enthusiasts</span></div>
+          <div class="kv"><b>Message</b><span>"Your workout plan should adapt when your goals change"</span></div>
+        </div>
+        <div class="campaign-card"><div class="cnum">Campaign 02 — Week 1–2</div><h4>Product Demonstration</h4>
+          <div class="kv"><b>Audience</b><span>Warm + broad</span></div>
+          <div class="kv"><b>Message</b><span>"Meet your adaptive AI fitness coach"</span></div>
+        </div>
+        <div class="campaign-card"><div class="cnum">Campaign 03 — Week 2</div><h4>The Fitness Graduate</h4>
+          <div class="kv"><b>Audience</b><span>Peloton / iFit / wearable users</span></div>
+          <div class="kv"><b>Message</b><span>"You've outgrown following along"</span></div>
+        </div>
+        <div class="campaign-card"><div class="cnum">Campaign 04 — Week 3</div><h4>Goal-Based Athlete</h4>
+          <div class="kv"><b>Audience</b><span>Runners, cyclists, hikers, strength</span></div>
+          <div class="kv"><b>Message</b><span>"Train for what matters to you"</span></div>
+        </div>
+        <div class="campaign-card"><div class="cnum">Campaign 05 — Week 3</div><h4>Women's Positioning Test</h4>
+          <div class="kv"><b>Audience</b><span>Women 35+</span></div>
+          <div class="kv"><b>Message</b><span>"Trained like an athlete, not just for appearance"</span></div>
+        </div>
+        <div class="campaign-card" style="background:var(--paper-dim); border-style:dashed;"><div class="cnum">Ongoing — Week 2+</div><h4>Retargeting</h4>
+          <div class="kv"><b>Audience</b><span>Clicked, didn't convert</span></div>
+          <div class="kv"><b>Message</b><span>Whichever angle is winning so far</span></div>
+        </div>
+      </div>
+
+      <h4 style="font-family:var(--display); font-size:15px; margin-bottom:6px;">Budget allocation — $1,000 total</h4>
+      <div class="budget-bar">
+        <div class="budget-seg" style="width:25%; background:#3B6E5E;"><b>$250</b>Week 1</div>
+        <div class="budget-seg" style="width:30%; background:#2B4C6F;"><b>$300</b>Week 2</div>
+        <div class="budget-seg" style="width:30%; background:#6B3B8C;"><b>$300</b>Week 3</div>
+        <div class="budget-seg" style="width:15%; background:#B5652E;"><b>$150</b>Week 4</div>
+      </div>
+      <div class="budget-legend">
+        <span>Week 1 — Problem awareness, Segment 1</span>
+        <span>Week 2 — Product demo + fitness graduate</span>
+        <span>Week 3 — Goal-based athlete + women's test</span>
+        <span>Week 4 — Scale the winner + retarget</span>
+      </div>
+
+      <h4 style="font-family:var(--display); font-size:15px; margin:40px 0 6px;">Planning model — what to realistically expect</h4>
+      <p class="sec-lede" style="margin-bottom:20px;">Grounded in 2026 Meta/Instagram benchmarks (CPM ~$12–18, CTR ~1–1.8%, iOS cost-per-install ~$4–8 for a niche lifestyle app), adjusted for a cold audience and zero prior data. Install→registration and registration→activation are working assumptions to replace with real numbers fast.</p>
+      <div class="proj-compare">
+        <div class="proj-card cons">
+          <h5>Conservative</h5>
+          <div class="pnum">~125</div><div class="plabel">Estimated installs ($8 CPI)</div>
+          <div class="pnum">~69</div><div class="plabel">Estimated registered signups (55%)</div>
+          <div class="pnum">~$14.50</div><div class="plabel">Cost per signup</div>
+        </div>
+        <div class="proj-card opt">
+          <h5>Optimistic</h5>
+          <div class="pnum">~250</div><div class="plabel">Estimated installs ($4 CPI)</div>
+          <div class="pnum">~175</div><div class="plabel">Estimated registered signups (70%)</div>
+          <div class="pnum">~$5.71</div><div class="plabel">Cost per signup</div>
+        </div>
+      </div>
+      <p style="font-size:13.5px; color:var(--ink-soft); margin-bottom:30px;">Applying a 40–55% activation rate on top, a realistic month lands somewhere between roughly 28 and 96 activated users. The point of week one isn't hitting a number in that range — it's narrowing the range for month two.</p>
+
+      <div class="callout ember" style="max-width:760px;">
+        <div class="callout-title">Kill criteria</div>
+        <p>If an angle's cost per signup runs 2–3x the other running tests after its first $50–75 of spend, stop it immediately and reallocate — don't wait out the week. A fast, cheap "no" is a good outcome for a test month.</p>
+      </div>
+    </section>
+
+    <!-- 08 REPORTING -->
+    <section id="reporting">
+      <div class="eyebrow kicker">08 — Reporting &amp; What We Need From You</div>
+      <h2 class="sec-title">How we'll know it's working, and what's left to decide.</h2>
+
+      <div class="grid-3" style="margin-bottom:44px;">
+        <div class="card"><h4>Weekly report</h4><p>Best-performing posts, spend, CTR, CPC, cost per signup, winning creatives, and what to continue / stop / test next.</p></div>
+        <div class="card"><h4>Day 15 checkpoint</h4><p>Which angles are trending toward a kill, which toward a winner, and whether attribution is holding up under real spend.</p></div>
+        <div class="card"><h4>Week 4 readout</h4><p>A verdict per belief, a per-platform readout, funnel economics, and a specific month-two recommendation.</p></div>
+      </div>
+
+      <h4 style="font-family:var(--display); font-size:15px; margin-bottom:16px;">Decisions we need from you</h4>
+      <div class="check-grid" style="margin-bottom:44px;">
+        <div class="check-item"><div class="box"></div><span><strong>App Store listing (ASO):</strong> keywords, screenshots, and description affect every paid click's install rate.</span></div>
+        <div class="check-item"><div class="box"></div><span><strong>Referral / invite:</strong> is there a shareable "invite a friend" link worth building content around?</span></div>
+        <div class="check-item"><div class="box"></div><span><strong>Post-signup nurture:</strong> what pushes a new user toward their first logged workout?</span></div>
+        <div class="check-item"><div class="box"></div><span><strong>Early price timing:</strong> build creative around it now, or hold until it's live?</span></div>
+        <div class="check-item"><div class="box"></div><span><strong>Benchmarks feature:</strong> confirm as soon as it's safe to reference publicly.</span></div>
+        <div class="check-item"><div class="box"></div><span><strong>Claim guardrails:</strong> anything creating friction worth a gut check?</span></div>
+      </div>
+
+      <div class="callout alpine" style="max-width:760px;">
+        <div class="callout-title">How founder time is used</div>
+        <p>One working session, Day 1 — everything else runs solo from there.</p>
+        <p>Occasional quick yes/no confirmations when content touches something not yet locked.</p>
+        <p>An optional 10–15 minute weekly check-in, if useful — not a standing requirement.</p>
+      </div>
+    </section>
+
+    <footer>
+      <span>Let's Gooo — 30-Day Brand, Product &amp; Growth Strategy</span>
+      <span>Prepared for Adam &amp; Alex · July 2026</span>
+    </footer>
+  </div>
+</div>
+
+<script>
+  // Scroll spy
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('#navlist a');
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+  sections.forEach(s => spy.observe(s));
+
+  // Score bar animation on view
+  const scoreRows = document.querySelectorAll('.score-row');
+  const scoreObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const fill = entry.target.querySelector('.score-fill');
+        fill.style.width = entry.target.dataset.score + '%';
+        scoreObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  scoreRows.forEach(r => scoreObs.observe(r));
+
+  // Season demo
+  const seasonTabs = document.querySelectorAll('.season-tab');
+  const captions = {
+    summer: '"Strong for trail season."',
+    fall: '"Strong for marathon season."',
+    winter: '"Strong for ski season."'
+  };
+  function setSeason(season){
+    seasonTabs.forEach(t => t.classList.toggle('active', t.dataset.season === season));
+    ['summer','fall','winter'].forEach(s => {
+      const p = document.getElementById('path-' + s);
+      if(s === season){
+        p.classList.remove('hidden');
+        requestAnimationFrame(() => p.classList.add('drawn'));
+      } else {
+        p.classList.add('hidden');
+        p.classList.remove('drawn');
+      }
+    });
+    document.getElementById('season-caption').textContent = captions[season];
+  }
+  seasonTabs.forEach(t => t.addEventListener('click', () => setSeason(t.dataset.season)));
+  setSeason('summer');
+
+  // Week tabs
+  const weekTabs = document.querySelectorAll('.week-tab');
+  weekTabs.forEach(t => t.addEventListener('click', () => {
+    weekTabs.forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelectorAll('.week-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('week-' + t.dataset.week).classList.add('active');
+  }));
+</script>
+</body>
+</html>
